@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myBillingArea">
+
+        <table style="width:100%;" cellpadding="5">
+            <thead>
+                <tr>
+                    <th align="start" style="border-bottom: 1px solid #ccc;" width="5%">ID</th>
+                    <th align="start" style="border-bottom: 1px solid #ccc;">Product Name</th>
+                    <th align="start" style="border-bottom: 1px solid #ccc;" width="10%">Price</th>
+                    <th align="start" style="border-bottom: 1px solid #ccc;" width="10%">Quantity</th>
+                    <th align="start" style="border-bottom: 1px solid #ccc;" width="15%">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border-bottom: 1px solid #ccc;">1</td>
+                    <td style="border-bottom: 1px solid #ccc;">Lenovo idea gaming</td>
+                    <td style="border-bottom: 1px solid #ccc;">53,000</td>
+                    <td style="border-bottom: 1px solid #ccc;">1</td>
+                    <td style="border-bottom: 1px solid #ccc;">53,000 </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom: 1px solid #ccc;">2</td>
+                    <td style="border-bottom: 1px solid #ccc;">Mi Note 8 Pro</td>
+                    <td style="border-bottom: 1px solid #ccc;">16,000</td>
+                    <td style="border-bottom: 1px solid #ccc;">1</td>
+                    <td style="border-bottom: 1px solid #ccc;">16,000 </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="end" style="font-weight: bold;">Grand Total: </td>
+                    <td colspan="1" style="font-weight: bold;">69,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <button type="button" onclick="downloadPDF()">Download PDF</button>
+    <script>
+        window.jsPDF = window.jspdf.jsPDF;
+        var docPDF = new jsPDF();
+
+        function downloadPDF(invoiceNo) {
+
+            var elementHTML = document.querySelector("#myBillingArea");
+            docPDF.html(elementHTML, {
+                callback: function (docPDF) {
+                    docPDF.save(invoiceNo + '.pdf');
+                },
+                x: 15,
+                y: 15,
+                width: 170,
+                windowWidth: 650
+            });
+        }
+    </script>
+</body>
+
+</html>

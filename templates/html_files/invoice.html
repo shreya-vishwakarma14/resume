@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice</title>
+  <style>
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+ 
+    .invoice {
+        text-align: center;
+        color: #007bff;
+        font-size: 27px;
+        font-weight: 700;
+    }
+ 
+    .invoice-column {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+ 
+    span {
+        font-weight: 600;
+    }
+ 
+    .brand_name {
+        text-align: center;
+        border-bottom: 2px solid #007bff;
+    }
+ 
+    .invoice_date {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1%;
+    }
+ 
+    .invoice_details {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+ 
+    .sender_details {
+        width: 50%;
+    }
+ 
+    .goods {
+        width: 20%;
+    }
+ 
+    .weight.frirate {
+        width: 5%;
+    }
+ 
+    .parti.destination {
+        width: 10%;
+    }
+ 
+    .rest {
+        width: 30%;
+    }
+ 
+    .tdtop {
+      vertical-align: top;
+    }
+ 
+ 
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+   
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      /* text-align: center; */
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    td {
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 invoice">Invoice</div>
+      <div class="col-6 invoice-column">
+        <div class="letterhead">
+          <div class="company-address">
+            GST No. <span>09ACJPY6525G3Z1</span>
+          </div>
+          <div class="company-address">
+            State Code:-<span> 09</span>
+          </div>
+          <div class="company-address">
+            Service REGD. <span>ACJPY6425G001</span>
+          </div>
+        </div>
+     
+        <div class="letterhead">
+          <div class="company-address">
+            MOBILE No. <span>9415616822, 9838343635</span>
+          </div>
+          <div class="company-address">
+            EMAIL:- <span>nationalenterprises87@gmail.com</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="brand_name">        
+        <div class="company-address">
+            <h1>NATIONAL TRANSPORT COMPANY</h1>
+            <p>Mahavalpur, Chandhasi, Mughalsarai, Chandauli, U.P.</p>
+        </div>        
+      </div>
+    </div>
+ 
+    <div class="invoice_date">      
+        <div>Invoice No. <span>UP/KAR/06/02/2024</span></div>
+        <div>Date. <span>06-02-2024</span></div>
+    </div>    
+   
+    <div class="row invoice_details">
+        <table>
+          <thead>
+            <tr>
+              <th class="sender_details">From:- <span> Varanasi</span></th>
+              <th>From:- <span> Agra</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for consigner in consignerData %}
+            {% for consignee in consigneeData %}
+            <tr>
+              <td>Consignor Name:- <span>{{ consigner.name }}</span></td>
+              <td>Consignee Name:- <span> {{ consignee.name }}</span></td>
+            </tr>          
+            <tr>
+              <td>Address:- <span>{{ consigner.address }}</span></td>
+              <td>Address:- <span>{{ consignee.address }}</span></td>
+            </tr>
+            <tr>
+              <td>GST IN:- <span>09ACJPY6525G3Z1</span></td>
+              <td>GST IN:- <span> 09AAAAK0203G1Z9</span></td>
+            </tr>
+            {% endfor %}  
+            {% endfor %}  
+          </tbody>
+        </table>
+    </div>
+ 
+    <div class="row">
+      <div class="col-12">
+        <table>
+          <thead>
+            <tr>
+              <th class="goods"><span>NATURE OF GOODS</span></th>
+              <th class="weight"><span> WEIGHT</span></th>
+              <th class="frirate"><span>FRIGHT RATE</span></th>
+              <th class="parti"><span>PARTICULAR</span></th>
+              <th class="destination"><span> DESTINATION FRIGHT</span></th>
+              <th class="rest"><span></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="6" class="tdtop">ORGANIC COMPOST</td>
+              <td rowspan="6" class="tdtop">25 MT</td>
+              <td rowspan="6" class="tdtop">1050 PMT</td>
+              <td>FRIGHT</td>
+              <td>2650.00</td>
+              <td>Truck No. UP50AT9394</td>
+            </tr>
+ 
+            <tr>
+              <td>Toll Tax</td>                    
+              <td></td>
+              <td>Driver Name:- <span>RAMBRICH H</span></td>
+            </tr>
+ 
+            <tr>                  
+              <td>GR + SR Charges</td>
+              <td></td>
+              <td>Address:- <span>AZAMGHAR U.P.</span></td>
+            </tr>
+ 
+            <tr>                  
+              <td>Loading Charges</td>
+              <td></td>
+              <td>CONTACT No. 1234569394</td>
+            </tr>
+ 
+            <tr>                  
+              <td>Kata Charges</td>
+              <td></td>
+              <td>ENGINE No.<span>HDKN54654AT9394</span></td>
+            </tr>
+ 
+            <tr>                  
+              <td>Total GST Amount</td>
+              <td>18%</td>
+              <td>DL No. <span>UP65KT32036545</span></td>
+            </tr>
+ 
+            <tr>
+              <td colspan="3">DELIVERY AT</td>                  
+              <td>TOTAL AMOUNT</td>
+              <td>26250.00</td>
+              <td>OWNER NAME SAME AS ABOVE<br><span>RAMCHARAN</span></td>
+            </tr>
+ 
+            <tr>
+              <td colspan="3">E-WAY BILL NO.</td>                  
+              <td>ADVANCE</td>
+              <td>00</td>
+              <td>Address<br><span>RAMCHARAN</span></td>
+            </tr>
+ 
+            <tr>
+              <td colspan="3" rowspan="2">BANK DETAILS:-<br>
+                <p>HDFC BANK MUGHALSARAI<br>
+                  ACCOUNT NO. 50200007984321<br>
+                   IFSC CODE. - HDFC0001891</p>                      
+              </td>                  
+              <td colspan="2">RECEVED THE GOODS IN SOUND CONDITION<br> ACCORDING TO THE INVOICE</td>
+              <td>PAN</td>                    
+            </tr>
+ 
+            <tr>
+              <td colspan="2"><br><br><b>DRIVER SIGN.........................</b></td>
+              <td colspan="2">ATTACHED WITH PROP:-<br>
+                <span>NATIONAL TRANSPORT COMPANY<br></span>
+                <span><b>AUTH SIGN....................................</b></span>
+              </td>                                
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+ 
